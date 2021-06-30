@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity(), MySMSBroadcastReceiver.OTPReceiveListe
             val task = client.startSmsRetriever()
             task.addOnSuccessListener {
                 // API successfully started
+                // Show something like: Waiting for the OTP
             }
 
             task.addOnFailureListener {

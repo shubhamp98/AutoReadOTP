@@ -30,7 +30,8 @@ class MySMSBroadcastReceiver: BroadcastReceiver() {
                     // by sending the code back to your server for SMS authenticity.
                     // But here we are just passing it to MainActivity
                     if (otpReceiver != null) {
-                        otp = otp.replace("<#> ", "").split("\n".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[0]
+                        // Replace the text as per the message format
+                        otp = otp.replace("<#> Your OTP for the App code is: ", "").split("\n".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[0]
                         otpReceiver!!.onOTPReceived(otp)
                     }
                 }
