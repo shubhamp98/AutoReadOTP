@@ -10,7 +10,8 @@ class MyApplication: Application() {
     override fun onCreate() {
         super.onCreate()
 
-        // This code requires one time to get Hash keys do comment and share key
+        // This code requires one time to get Hash keys
+        // After getting the key do comment this and share key
         val appSignature = AppSignatureHelper(this)
         Log.v("AppSignature", appSignature.appSignatures.toString())
     }
