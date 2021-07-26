@@ -3,6 +3,7 @@ package com.example.autoreadotp
 import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
@@ -13,6 +14,7 @@ class MainActivity : AppCompatActivity(), MySMSBroadcastReceiver.OTPReceiveListe
 
 
     private var smsReceiver: MySMSBroadcastReceiver? = null
+    private val TAG = MainActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,10 +43,13 @@ class MainActivity : AppCompatActivity(), MySMSBroadcastReceiver.OTPReceiveListe
             task.addOnSuccessListener {
                 // API successfully started
                 // Show something like: Waiting for the OTP
+                Log.d(TAG, "SMS Retriever API Started ")
             }
 
             task.addOnFailureListener {
                 // Fail to start API
+                Log.e(TAG, it.localizedMessage)
+
             }
         } catch (e: Exception) {
             e.printStackTrace()
